@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Pull Latest Image"){
 			steps{
-				bat "docker pull vinsdocker/selenium-docker"
+				bat "docker pull suketdocker/deals:myfirstimagepush"
 			}
 		}
 		stage("Start Grid"){
@@ -13,15 +13,15 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				bat "docker-compose up search-module book-flight-module"
+				bat "docker-compose up dealsCpuFirefox dealsCpuChrome"
 			}
 		}
 	}
 	post{
 		always{
 			archiveArtifacts artifacts: 'output/**'
-			sh "docker-compose down"
-			sh "sudo rm -rf output/"
+			bat "docker-compose down"
+			bat "sudo rm -rf output/"
 		}
 	}
 }
