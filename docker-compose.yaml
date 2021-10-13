@@ -2,8 +2,6 @@ version: "3"
 services:
   hub:
     image: selenium/hub:3.141.59
-    ports:
-      - "4444:4444"
   chrome:
     image: selenium/node-chrome:3.141.59
     shm_size: '1gb'
@@ -27,7 +25,7 @@ services:
          - BROWSER=chrome
          - HUB_HOST=hub
     volumes:
-         - ./newOutputChrome:/usr/share/dealsAutomation/target
+         - ./output/newOutputChrome:/usr/share/dealsAutomation/target
   dealsCpuFirefox:
     image: suketdocker/deals:myfirstimagepush
     depends_on:
@@ -37,4 +35,4 @@ services:
          - BROWSER=firefox
          - HUB_HOST=hub
     volumes:
-         - ./newOutputFirefox:/usr/share/dealsAutomation/target    
+         - ./output/newOutputFirefox:/usr/share/dealsAutomation/target    
