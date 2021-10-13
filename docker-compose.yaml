@@ -17,7 +17,7 @@ services:
     environment:
       - HUB_HOST=hub
   dealsCpuChrome:
-    image: suketdocker/deals:myfirstimagepush
+    image: suketdocker/deals
     depends_on:
         - chrome
         - firefox
@@ -27,7 +27,7 @@ services:
     volumes:
          - ./output/newOutputChrome:/usr/share/dealsAutomation/target
   dealsCpuFirefox:
-    image: suketdocker/deals:myfirstimagepush
+    image: suketdocker/deals
     depends_on:
         - chrome
         - firefox

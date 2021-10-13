@@ -3,7 +3,7 @@ pipeline{
 	stages{
 		stage("Pull Latest Image"){
 			steps{
-				bat "docker pull suketdocker/deals:myfirstimagepush"
+				bat "docker pull suketdocker/deals"
 			}
 		}
 		stage("Start Grid"){
@@ -21,7 +21,6 @@ pipeline{
 		always{
 			archiveArtifacts artifacts: 'output/**'
 			bat "docker-compose down"
-			bat "sudo rm -rf output/"
 		}
 	}
 }
