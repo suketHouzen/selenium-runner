@@ -3,24 +3,25 @@ pipeline{
 	stages{
 		stage("Pull Latest Image"){
 			steps{
-				bat "docker pull suketdocker/deals"
+				sh "docker pull suketdocker/deals"
 			}
 		}
 		stage("Start Grid"){
 			steps{
-				bat "docker-compose up -d hub chrome firefox"
+				sh "docker-compose up -d hub chrome firefox"
 			}
 		}
 		stage("Run Test"){
 			steps{
-				bat "docker-compose up dealsCpuFirefox dealsCpuChrome"
+				sh "docker-compose up dealsCpuFirefox dealsCpuChrome"
 			}
 		}
 	}
 	post{
 		always{
 			archiveArtifacts artifacts: 'output/**'
-			bat "docker-compose down"
+			sh "docker-compose down"
+			sh "sudo rm -rf output/"
 		}
 	}
 }
