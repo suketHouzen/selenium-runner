@@ -25,7 +25,7 @@ pipeline{
 			sh "docker-compose down"
 			sh "sudo rm -rf output/"
 			emailext (
-					  body: '${FILE,path="/usr/share/dealsAutomation/output/newOutputChrome/cucumber_html_report/index.html"}',
+					  body: '${FILE,path="output/newOutputChrome/cucumber_html_report/index.html"}',
                       subject: "Deals smoke test ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
                       to: 'suket@houzen.co.uk'
                 	)
