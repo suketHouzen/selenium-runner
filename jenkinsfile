@@ -15,7 +15,9 @@ pipeline{
 			steps{
 				sh "docker-compose up dealsCpuFirefox dealsCpuChrome"
 			}
+			
 		}
+		
 	}
 	post{
 		always{
@@ -23,5 +25,11 @@ pipeline{
 			sh "docker-compose down"
 			sh "sudo rm -rf output/"
 		}
+	
+
+
 	}
 }
+/*/mail bcc: '', body: '''Hi All,
+Deals smoke test was performed.
+Please check the logs for the result.''', cc: '', from: '', replyTo: '', subject: 'Deals daily smoke test result', to: 'suket@houzen.co.uk'*/

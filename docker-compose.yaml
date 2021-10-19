@@ -29,7 +29,6 @@ services:
   dealsCpuFirefox:
     image: suketdocker/deals
     depends_on:
-        - chrome
         - firefox
     environment:
          - BROWSER=firefox
