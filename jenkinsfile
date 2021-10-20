@@ -30,7 +30,7 @@ pipeline{
                      		   body: readFile("output/newOutputChrome/cucumber_html_report/index.html"), mimeType: 'text/html')
                 	
 			sh "docker-compose down"
-			sh "sudo rm -rf output/"
+			
 			
 		}
 	}

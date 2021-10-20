@@ -26,7 +26,6 @@ services:
          - HUB_HOST=hub
     volumes:
          - ./output/newOutputChrome:/usr/share/dealsAutomation/target
-         - /home/ec2-user/workspace/selenium_docker _runner/output/newOutputChrome/cucumber-reports/Cucumber.json:/usr/share/dealsAutomation/target/cucumber-reports/Cucumber.json
   dealsCpuFirefox:
     image: suketdocker/deals
     depends_on:
