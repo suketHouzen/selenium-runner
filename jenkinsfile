@@ -8,12 +8,12 @@ pipeline{
 		}
 		stage("Start Grid"){
 			steps{
-				sh "docker-compose up -d hub chrome firefox"
+				sh "docker-compose up -d hub chrome"
 			}
 		}
 		stage("Run Test"){
 			steps{
-				sh "docker-compose up dealsCpuFirefox dealsCpuChrome"
+				sh "docker-compose up dealsCpuChrome"
 			}
 			
 		}
@@ -23,8 +23,8 @@ pipeline{
 		always{
 			archiveArtifacts artifacts: 'output/**'
 			emailext (
-					  body: '${FILE,path="output/newOutputChrome/cucumber_html_report"}',
-                      subject: "Deals smoke test ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
+					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
+                      subject: "Smoke test on deals was ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
                       to: 'suket@houzen.co.uk'
                 	)
 			sh "docker-compose down"
