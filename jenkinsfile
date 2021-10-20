@@ -25,7 +25,7 @@ pipeline{
 			emailext (
 					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
                       subject: "Smoke test on deals was ${currentBuild.currentResult}. Test Results are:-",
-                      to: 'techindia@houzen.co.uk'
+                      to: 'tarun@houzen.co.uk'
                 	)
 			sh "docker-compose down"
 			sh "sudo rm -rf output/"
