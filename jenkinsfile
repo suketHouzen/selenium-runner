@@ -24,7 +24,7 @@ pipeline{
 			archiveArtifacts artifacts: 'output/**'
 					  
                      emailext mimeType: 'text/html',
-                              body: '${FILE, path="target/selenium.log"}',
+                              body: '${FILE, path="output/newOutputChrome/selenium.log"}',
                               subject: currentBuild.currentResult + " : " + env.JOB_NAME,
                               to: 'suket@houzen.co.uk'
                 	
