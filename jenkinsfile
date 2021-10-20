@@ -23,9 +23,11 @@ pipeline{
 		always{
 			archiveArtifacts artifacts: 'output/**'
 			emailext (
-					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
-                      subject: "Smoke test on deals was ${currentBuild.currentResult}. Test Results are:-",
-                      to: 'suket@houzen.co.uk, tarun@houzen.co.uk, nripesh@houzen.co.uk, sweta@houzen.co.uk, piyush@houzen.co.uk'
+					  
+                     emailext (to: 'suket@houzen.co.uk, nripesh@houzen.co.uk, tarun@houzen.co.uk, sweta@houzen.co.uk, saket@houzen.co.uk', 
+                     		   replyTo: 'suket@houzen.co.uk', 
+                     		   subject: "Email Report for Deals smoke test ", 
+                     		   body: readFile("output/newOutputChrome/cucumber_html_report/index.html"), mimeType: 'text/html')
                 	)
 			sh "docker-compose down"
 			sh "sudo rm -rf output/"
