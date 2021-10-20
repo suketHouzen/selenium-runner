@@ -23,10 +23,11 @@ pipeline{
 		always{
 			archiveArtifacts artifacts: 'output/**'
 					  
-                     emailext mimeType: 'text/html',
-                              body: '${FILE, path="/home/ec2-user/workspace/selenium_docker _runner/output/newOutputChrome/Selenium.log"}',
-                              subject: currentBuild.currentResult + " : " + env.JOB_NAME,
-                              to: 'suket@houzen.co.uk'
+                     emailext (
+					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
+                      subject: "Smoke test on deals was ${currentBuild.currentResult}. Test Results are:-",
+                      to: 'suket@houzen.co.uk'
+                	)
                 	
 			sh "docker-compose down"
 			
