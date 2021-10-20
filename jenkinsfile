@@ -23,7 +23,7 @@ pipeline{
 		always{
 			archiveArtifacts artifacts: 'output/**'
 			emailext (
-					  body: '${FILE,path="output/newOutputChrome/cucumber_html_report/index.html"}',
+					  body: '${FILE,path="output/newOutputChrome/cucumber_html_report"}',
                       subject: "Deals smoke test ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
                       to: 'suket@houzen.co.uk'
                 	)
