@@ -24,7 +24,7 @@ pipeline{
 			archiveArtifacts artifacts: 'output/**'
 			emailext (
 					  
-                     emailext (to: 'suket@houzen.co.uk, nripesh@houzen.co.uk, tarun@houzen.co.uk, sweta@houzen.co.uk, saket@houzen.co.uk', 
+                     emailext (to: 'suket@houzen.co.uk', 
                      		   replyTo: 'suket@houzen.co.uk', 
                      		   subject: "Email Report for Deals smoke test ", 
                      		   body: readFile("output/newOutputChrome/cucumber_html_report/index.html"), mimeType: 'text/html')
@@ -37,4 +37,5 @@ pipeline{
 }
 /*/mail bcc: '', body: '''Hi All,
 Deals smoke test was performed.
+, nripesh@houzen.co.uk, tarun@houzen.co.uk, sweta@houzen.co.uk, saket@houzen.co.uk
 Please check the logs for the result.''', cc: '', from: '', replyTo: '', subject: 'Deals daily smoke test result', to: 'suket@houzen.co.uk'*/
