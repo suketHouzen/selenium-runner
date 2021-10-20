@@ -24,8 +24,8 @@ pipeline{
 			archiveArtifacts artifacts: 'output/**'
 			emailext (
 					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
-                      subject: "Smoke test on deals was ${currentBuild.currentResult}: Job ${env.JOB_NAME}",
-                      to: 'suket@houzen.co.uk'
+                      subject: "Smoke test on deals was ${currentBuild.currentResult}. Test Results are:-",
+                      to: 'tech@houzen.co.uk'
                 	)
 			sh "docker-compose down"
 			sh "sudo rm -rf output/"
