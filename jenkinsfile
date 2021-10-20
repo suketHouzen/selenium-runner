@@ -22,12 +22,11 @@ pipeline{
 	post{
 		always{
 			archiveArtifacts artifacts: 'output/**'
-			cucumber customCssFiles: '', customJsFiles: '', failedFeaturesNumber: -1, failedScenariosNumber: -1, failedStepsNumber: -1, fileIncludePattern: '**/*.json', jsonReportDirectory: 'output/newOutputChrome/cucumber-reports/Cucumber.json', pendingStepsNumber: -1, reportTitle: 'Smoke test', skippedStepsNumber: -1, sortingMethod: 'ALPHABETICAL', undefinedStepsNumber: -1
 					  
-                     emailext (to: 'suket@houzen.co.uk', 
-                     		   replyTo: 'suket@houzen.co.uk', 
-                     		   subject: "Email Report for Deals smoke test ", 
-                     		   body: readFile("output/newOutputChrome/cucumber_html_report/index.html"), mimeType: 'text/html')
+                     emailext mimeType: 'text/html',
+                              body: '${FILE, path="target/selenium.log"}',
+                              subject: currentBuild.currentResult + " : " + env.JOB_NAME,
+                              to: 'suket@houzen.co.uk'
                 	
 			sh "docker-compose down"
 			
