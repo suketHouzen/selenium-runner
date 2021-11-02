@@ -1,1 +1,37 @@
-
+pipeline{
+	agent any
+	stages{
+		stage("Pull Latest Image"){
+			steps{
+				sh "docker pull suketdocker/deals"
+			}
+		}
+		stage("Start Grid"){
+			steps{
+				sh "docker-compose up -d hub chrome"
+			}
+		}
+		stage("Run Test"){
+			steps{
+				sh "docker-compose up dealsCpuChrome"
+			}
+			
+		}
+		
+	}
+	post{
+		always{
+			archiveArtifacts artifacts: 'output/**'
+					  
+                     emailext (
+					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
+                      subject: "Smoke test on deals was ${currentBuild.currentResult}. Test Results are:-",
+                      to: 'suket@houzen.co.uk'
+                	)
+                	
+			sh "docker-compose down"
+			
+			
+		}
+	}
+}
