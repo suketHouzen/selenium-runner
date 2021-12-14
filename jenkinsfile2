@@ -13,10 +13,9 @@ pipeline{
 		}
 		stage("Run Test"){
 			steps{
-				try{
+				
 				sh "docker-compose up dealsCpuChrome"
-				}
-				catch (err) { currentBuild.result = 'FAILURE' }
+				
 			}
 			}
 			
