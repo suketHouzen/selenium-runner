@@ -28,7 +28,7 @@ pipeline{
 					  
                      emailext (
 					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
-                      subject: "Smoke test on deals was ${currentBuild.currentResult}. Test Results are:-",
+                      subject: "Smoke test on DEALS",
                       to: 'suket@houzen.co.uk'
                 	)
                 	
