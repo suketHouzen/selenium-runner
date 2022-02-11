@@ -24,6 +24,8 @@ pipeline{
 	post{
 		always{
 			archiveArtifacts artifacts: 'output/**'
+			
+			cucumber customCssFiles: '', customJsFiles: '', fileIncludePattern: '**/*.json', jsonReportDirectory: 'output/newOutputChrome/cucumber-reports', reportTitle: 'Deals report', sortingMethod: 'ALPHABETICAL'
 					  
                      emailext (
 					  body: '${FILE,path="output/newOutputChrome/Selenium.log"}',
