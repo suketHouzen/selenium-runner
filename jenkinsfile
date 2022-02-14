@@ -31,7 +31,7 @@ pipeline{
                      emailext (
 					  body: '${FILE,path="http://ec2-35-176-255-156.eu-west-2.compute.amazonaws.com:8080/job/selenium_docker%20_runner/lastCompletedBuild/cucumber-html-reports_c3e386c2-7890-3c29-9eb2-69144c281692/overview-features.html"}',
                       subject: "Smoke test on Deals",
-                      to: 'techindia@houzen.co.uk'
+                      to: 'suket@houzen.co.uk'
                 	)
                 	
 			sh "docker-compose down"
