@@ -23,9 +23,10 @@ pipeline{
 	}
 	post{
 		always{
+			cucumber customCssFiles: '', customJsFiles: '', fileIncludePattern: '**/*.json', jsonReportDirectory: 'output/newOutputChrome/cucumber-reports', reportTitle: 'Deals report', sortingMethod: 'ALPHABETICAL'
+
 			archiveArtifacts artifacts: 'output/**'
 			
-			cucumber customCssFiles: '', customJsFiles: '', fileIncludePattern: '**/*.json', jsonReportDirectory: 'output/newOutputChrome/cucumber-reports', reportTitle: 'Deals report', sortingMethod: 'ALPHABETICAL'
 					  
                      emailext (
 					  body: '${FILE,path="http://ec2-35-176-255-156.eu-west-2.compute.amazonaws.com:8080/job/selenium_docker%20_runner/lastCompletedBuild/cucumber-html-reports_c3e386c2-7890-3c29-9eb2-69144c281692/overview-features.html"}',
