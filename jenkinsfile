@@ -20,8 +20,7 @@ pipeline{
 		stage("Generate cucmber jvm report"){
 			steps{
 				
-				sh "pwd"
-				sh "locate pom.xml"
+				sh "mvn verify -DskipTests"
 				
 			}
 			
