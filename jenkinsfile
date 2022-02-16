@@ -19,8 +19,8 @@ pipeline{
 			}}
 		stage("Generate cucmber jvm report"){
 			steps{
-				sh "sudo apt update"
-				sh "sudo apt install maven"
+				sh "apt update"
+				sh "apt install maven"
 				sh "mvn -version"
 				sh "mvn verify -DskipTests"
 				
