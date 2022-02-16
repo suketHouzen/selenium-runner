@@ -1,6 +1,19 @@
 pipeline{
 	agent any
+	tools{
+			maven 'Maven 3.3.9' 
+        		jdk 'jdk8'
+			}
 	stages{
+		stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                ''' 
+            		}
+        	}
+		
 		stage("Pull Latest Image"){
 			steps{
 				sh "docker pull suketdocker/deals"
@@ -19,9 +32,7 @@ pipeline{
 			}}
 		stage("Generate cucmber jvm report"){
 			steps{
-				sh "apt update"
-				sh "apt install maven"
-				sh "mvn -version"
+				
 				sh "mvn verify -DskipTests"
 				
 			}
