@@ -2,10 +2,8 @@ pipeline{
 	agent any
 	
 	stages{
-		stage ('Initialize') {
-            
 		
-		stage("Pull Latest Image"){
+            	stage("Pull Latest Image"){
 			steps{
 				sh "docker pull suketdocker/deals"
 			}
