@@ -17,13 +17,20 @@ pipeline{
 				sh "docker-compose up dealsCpuChrome"
 				
 			}
+		stage("Generate cucmber jvm report"){
+			steps{
+				
+				sh "pwd"
+				sh "locate pom.xml"
+				
+			}
 			
 		}
 		
 	}
 	post{
 		always{
-			cucumber customCssFiles: '', customJsFiles: '', fileIncludePattern: '**/*.json', jsonReportDirectory: 'output/newOutputChrome/cucumber-reports', reportTitle: 'Deals report', sortingMethod: 'ALPHABETICAL'
+			cucumber customCssFiles: '', customJsFiles: '', fileIncludePattern: '**/*.json', jsonReportDirectory: 'output/newOutputChrome', reportTitle: 'Deals report', sortingMethod: 'ALPHABETICAL'
 
 			archiveArtifacts artifacts: 'output/**'
 			
