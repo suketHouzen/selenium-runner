@@ -19,14 +19,7 @@ pipeline{
 				sh "docker-compose up dealsCpuChrome"
 				
 			}}
-		stage("Generate cucmber jvm report"){
-			steps{
-				
-				sh "mvn verify -DskipTests"
-				
-			}
-			
-		}
+		
 		
 	}
 	post{
